@@ -69,6 +69,7 @@ public class CategoriaResource {
 		return ResponseEntity.ok().body(listDTO);
 	}
 
+	//busca paginada
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<CategoriaDTO>> findPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
