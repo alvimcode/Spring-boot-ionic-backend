@@ -93,4 +93,9 @@ public class ClienteService {
 		newObj.setEmail(obj.getEmail());
 	}
 
+	public Cliente find(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

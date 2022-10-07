@@ -20,22 +20,28 @@ public class ProdutoService {
 
 	@Autowired
 	private ProdutoRepository repo;
-	
+
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
-	
-	//busca serviço por ID
-	public Produto buscar(Integer id) { 
-		 Optional<Produto> obj = repo.findById(id); 
-		return obj.orElseThrow(() -> new ObjectNotFoundException( 
-		 "Objeto não encontrado! Id: " + id + ", Tipo: " + Produto.class.getName())); 
-		}
-	
-	//busca paginada
-	public Page<Produto> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction) {
+	// busca serviço por ID
+	public Produto buscar(Integer id) {
+		Optional<Produto> obj = repo.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Produto.class.getName()));
+	}
+
+	// busca paginada
+	public Page<Produto> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy,
+			String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		List<Categoria> categorias = categoriaRepository.findAllById(ids);
-		return repo.findDistinctByNomeContainingAndCategoriasIn(nome, categorias, pageRequest);	
+		return repo.findDistinctByNomeContainingAndCategoriasIn(nome, categorias, pageRequest);
 	}
+
+	public Produto findAll(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
