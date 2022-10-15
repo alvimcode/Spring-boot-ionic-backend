@@ -47,6 +47,7 @@ public class PedidoService {
 	}
 	
 	public Pedido insert(Pedido obj) {
+		obj.setCliente(null);
 		obj.setId(null);
 		obj.setInstante(new Date());
 		obj.setCliente(clienteService.find(obj.getCliente().getId()));
